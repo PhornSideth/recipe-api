@@ -4,6 +4,8 @@ import "dotenv/config.js"
 import {and, eq} from 'drizzle-orm'
 import {db} from './config/db.js'
 import { FavoriteTable } from './db/schema.js'
+import job from './config/cron.js'
+if(ENV.NODE_ENV =="production") job.start()
 const app=express()
 app.use(express.json())
 const PORT=ENV.PORT || 5000
